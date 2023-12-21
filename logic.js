@@ -38,22 +38,23 @@ function hasOperatorBeenClicked(event){
 }
 
 equalBtn.addEventListener('click', () => {
+    
     if(numOne && !operatorStatus){
         numTwo = display.textContent;
-        operatorDisplay.textContent = '';
-        operatorStatus = true;
-        operate(+numOne, +numTwo, operator);
+        if(+numTwo === 0 && operator === '/'){
+            alert('You cannot divide by 0!');
+            reset();
+        }
+        else{
+            operatorDisplay.textContent = '';
+            operatorStatus = true;
+            operate(+numOne, +numTwo, operator);
+        }
+
     }
 })
 
-clearBtn.addEventListener('click', () => {
-    operatorDisplay.textContent = '';
-    operatorStatus = false;
-    display.textContent = '';
-    numOne = undefined;
-    operator = undefined;
-    numTwo = undefined;
-})
+clearBtn.addEventListener('click', reset);
 
 deleteBtn.addEventListener('click', () => {
     let str = display.textContent.split('');
@@ -76,6 +77,15 @@ numberBtn.forEach(btn => {
         }
         display.textContent += event.target.textContent;
 })})
+
+function reset(){
+    operatorDisplay.textContent = '';
+    operatorStatus = false;
+    display.textContent = '';
+    numOne = undefined;
+    operator = undefined;
+    numTwo = undefined;
+}
 
 function operate(numOne, numTwo, operator){
     const calc = new Calculator();
