@@ -12,6 +12,18 @@ function Calculator(){
     }
 }
 
+let display = document.querySelector('#display');
+let numberBtn = document.querySelectorAll('.number-btn')
+
+numberBtn.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        display.textContent += event.target.textContent;
+    
+})})
+
+
+
+
 const calc = new Calculator();
 console.log(calc.calculate(5, 6, '+'));
 console.log(calc.calculate(6, 5, '-'));
