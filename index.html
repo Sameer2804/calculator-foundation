@@ -9,35 +9,39 @@
 </head>
 <body> 
     <div id="calculator">
-        <div id="display"></div>
+        <div id="screen"></div>
+        <div>
+            <div id="operator-display"></div>
+            <div id="display"></div>
+        </div>
         <div id="ctrl-btns">
-            <button>CLEAR</button>
-            <button>DELETE</button>
+            <button id="clear-btn">CLEAR</button>
+            <button id="delete-btn">DELETE</button>
         </div>
         <div id="normal-btns">
             <div class="row">
                 <button class="number-btn">7</button>
                 <button class="number-btn">8</button>
                 <button class="number-btn">9</button>
-                <button>÷</button>
+                <button id="divide-btn">/</button>
             </div>
             <div class="row">
                 <button class="number-btn">4</button>
                 <button class="number-btn">5</button>
                 <button class="number-btn">6</button>
-                <button>x</button>
+                <button id="multiply-btn">*</button>
             </div>
             <div class="row">
                 <button class="number-btn">1</button>
                 <button class="number-btn">2</button>
                 <button class="number-btn">3</button>
-                <button>-</button>
+                <button id="minus-btn">-</button>
             </div>
             <div class="row">
                 <button>.</button>
                 <button class="number-btn">0</button>
-                <button>=</button>
-                <button>+</button>
+                <button id="equal-btn">=</button>
+                <button id="add-btn">+</button>
             </div>
         </div>
     </div>
