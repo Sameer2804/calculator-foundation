@@ -21,6 +21,7 @@ let operatorBtn = document.querySelectorAll('#divide-btn, #multiply-btn, #minus-
 let equalBtn = document.querySelector('#equal-btn')
 let clearBtn = document.querySelector('#clear-btn')
 let deleteBtn = document.querySelector('#delete-btn')
+let decimalBtn = document.querySelector('#decimal-btn');
 
 
 let numOne;
@@ -29,8 +30,9 @@ let operator;
 let operatorStatus = false;
 
 function hasOperatorBeenClicked(event){
-    operatorStatus = true; //so that when user enters second number, display will clear first
-    if(display.textContent ){
+    if(display.textContent && !operatorDisplay.textContent){
+        operatorStatus = true; //so that when user enters second number, display will clear first
+        decimalBtn.disabled = false;
         numOne = display.textContent;
         operator = event.target.textContent;
         operatorDisplay.textContent = operator;
@@ -50,6 +52,7 @@ equalBtn.addEventListener('click', () => {
             operatorStatus = true;
             operate(+numOne, +numTwo, operator);
         }
+        decimalBtn.disabled = false;
 
     }
 })
@@ -71,12 +74,32 @@ operatorBtn.forEach(btn => {
 
 numberBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
-        if(operatorStatus){
-            display.textContent = '';
-            operatorStatus = false;
-        }
+
+        clearDisplayAfterOperandPressed();
+
         display.textContent += event.target.textContent;
 })})
+
+decimalBtn.addEventListener('click', () => {
+    
+    clearDisplayAfterOperandPressed();
+
+    if(display.textContent.split('').includes('.')){
+        decimalBtn.disabled = true;
+    }
+    else{
+        display.textContent += decimalBtn.textContent;
+    }
+
+})
+
+function clearDisplayAfterOperandPressed(){
+    if(operatorStatus){
+        display.textContent = '';
+        operatorStatus = false;
+        decimalBtn.disabled = false;
+    }
+}
 
 function reset(){
     operatorDisplay.textContent = '';
@@ -85,11 +108,12 @@ function reset(){
     numOne = undefined;
     operator = undefined;
     numTwo = undefined;
+    decimalBtn.disabled = false;
 }
 
 function operate(numOne, numTwo, operator){
     const calc = new Calculator();
     let answer = calc.calculate(numOne, numTwo, operator);
-    answer = Math.floor(answer * 100) / 100;
+    answer = Math.floor(answer * 1000000) / 1000000;
     display.textContent = answer;
 }
