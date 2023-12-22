@@ -89,13 +89,7 @@ function reset(){
 
 function operate(numOne, numTwo, operator){
     const calc = new Calculator();
-    const answer = calc.calculate(numOne, numTwo, operator);
+    let answer = calc.calculate(numOne, numTwo, operator);
+    answer = Math.floor(answer * 100) / 100;
     display.textContent = answer;
 }
-
-
-
-// console.log(calc.calculate(5, 6, '+'));
-// console.log(calc.calculate(6, 5, '-'));
-// console.log(calc.calculate(5, 6, '*'));
-// console.log(calc.calculate(12, 7, '/'));
