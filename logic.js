@@ -90,8 +90,7 @@ numberBtn.forEach(btn => {
 allSquareBtn.forEach( btn => {
     document.addEventListener('keydown', (event) =>{
         if(event.key === btn.textContent){
-            btn.click()
-
+            btn.click();
         }
     })
 })
@@ -99,8 +98,8 @@ allSquareBtn.forEach( btn => {
 document.addEventListener('keydown', (event) =>{
 
     if(event.key === 'Enter'){
+        blurAll();
         equalBtn.click();
-
     }
     if(event.key === 'Backspace'){
         deleteBtn.click();
@@ -110,7 +109,6 @@ document.addEventListener('keydown', (event) =>{
         decimalBtn.click();
     }
 })
-
 
 function triggerButton(event){
 
@@ -159,4 +157,11 @@ function operate(numOne, numTwo, operator){
     let answer = calc.calculate(numOne, numTwo, operator);
     answer = Math.floor(answer * 1000000) / 1000000;
     display.textContent = answer;
+}
+
+function blurAll(){
+    let blurElement = document.createElement('input');
+    document.body.appendChild(blurElement);
+    blurElement.focus();
+    document.body.removeChild(blurElement);
 }
