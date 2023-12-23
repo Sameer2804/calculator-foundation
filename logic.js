@@ -105,14 +105,12 @@ document.addEventListener('keydown', (event) =>{
     if(event.key === 'Backspace'){
         deleteBtn.click();
     }
+
+    if(event.key === decimalBtn.textContent){
+        decimalBtn.click();
+    }
 })
 
-document.addEventListener('keydown', (event) =>{
-    document.addEventListener('keydown', (event) =>{
-        
-    })
-
-})
 
 function triggerButton(event){
 
