@@ -90,6 +90,7 @@ numberBtn.forEach(btn => {
 allSquareBtn.forEach( btn => {
     document.addEventListener('keydown', (event) =>{
         if(event.key === btn.textContent){
+            blurAll();
             btn.click();
         }
     })
