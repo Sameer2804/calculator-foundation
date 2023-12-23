@@ -76,7 +76,9 @@ numberBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
 
         clearDisplayAfterOperandPressed();
-
+        if(display.textContent === '0'){
+            display.textContent = '';
+        }
         display.textContent += event.target.textContent;
 })})
 
@@ -95,7 +97,7 @@ decimalBtn.addEventListener('click', () => {
 
 function clearDisplayAfterOperandPressed(){
     if(operatorStatus){
-        display.textContent = '';
+        display.textContent = 0;
         operatorStatus = false;
         decimalBtn.disabled = false;
     }
@@ -104,7 +106,7 @@ function clearDisplayAfterOperandPressed(){
 function reset(){
     operatorDisplay.textContent = '';
     operatorStatus = false;
-    display.textContent = '';
+    display.textContent = 0;
     numOne = undefined;
     operator = undefined;
     numTwo = undefined;
