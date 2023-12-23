@@ -18,6 +18,7 @@ let multiplyBtn = document.querySelector('#multiply-btn')
 let minusBtn = document.querySelector('#minus-btn')
 let addBtn = document.querySelector('#add-btn')
 let operatorBtn = document.querySelectorAll('#divide-btn, #multiply-btn, #minus-btn, #add-btn')
+let allSquareBtn = document.querySelectorAll('#divide-btn, #multiply-btn, #minus-btn, #add-btn, .number-btn')
 let equalBtn = document.querySelector('#equal-btn')
 let clearBtn = document.querySelector('#clear-btn')
 let deleteBtn = document.querySelector('#delete-btn')
@@ -75,6 +76,7 @@ operatorBtn.forEach(btn => {
     btn.addEventListener('click', hasOperatorBeenClicked);
     });
 
+
 numberBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
 
@@ -84,6 +86,44 @@ numberBtn.forEach(btn => {
         }
         display.textContent += event.target.textContent;
 })})
+
+allSquareBtn.forEach( btn => {
+    document.addEventListener('keydown', (event) =>{
+        if(event.key === btn.textContent){
+            btn.click()
+
+        }
+    })
+})
+
+document.addEventListener('keydown', (event) =>{
+
+    if(event.key === 'Enter'){
+        equalBtn.click();
+
+    }
+    if(event.key === 'Backspace'){
+        console.log(event.key)
+    }
+})
+
+document.addEventListener('keydown', (event) =>{
+    document.addEventListener('keydown', (event) =>{
+        
+    })
+
+})
+
+function triggerButton(event){
+
+    clearDisplayAfterOperandPressed();
+    if(display.textContent === '0'){
+        display.textContent = '';
+    }
+    display.textContent += event.target.textContent;
+}
+
+
 
 decimalBtn.addEventListener('click', () => {
     
