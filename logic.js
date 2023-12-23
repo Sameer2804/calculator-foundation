@@ -72,9 +72,7 @@ deleteBtn.addEventListener('click', () => {
     
 })
 
-operatorBtn.forEach(btn => {
-    btn.addEventListener('click', hasOperatorBeenClicked);
-    });
+operatorBtn.forEach(btn => btn.addEventListener('click', hasOperatorBeenClicked));
 
 
 numberBtn.forEach(btn => {
@@ -110,17 +108,6 @@ document.addEventListener('keydown', (event) =>{
         decimalBtn.click();
     }
 })
-
-function triggerButton(event){
-
-    clearDisplayAfterOperandPressed();
-    if(display.textContent === '0'){
-        display.textContent = '';
-    }
-    display.textContent += event.target.textContent;
-}
-
-
 
 decimalBtn.addEventListener('click', () => {
     
