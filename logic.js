@@ -61,10 +61,13 @@ clearBtn.addEventListener('click', reset);
 
 deleteBtn.addEventListener('click', () => {
     let str = display.textContent.split('');
-    if(str){
+    if(!(str.length === 1 && str == 0)){
         str.splice(str.length -  1, 1);
     }
     display.textContent = str.join('');
+    if(display.textContent === ''){
+        display.textContent = 0;
+    }
     
 })
 
