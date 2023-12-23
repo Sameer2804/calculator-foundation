@@ -103,7 +103,7 @@ document.addEventListener('keydown', (event) =>{
 
     }
     if(event.key === 'Backspace'){
-        console.log(event.key)
+        deleteBtn.click();
     }
 })
 
